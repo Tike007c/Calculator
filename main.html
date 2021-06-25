@@ -1,0 +1,89 @@
+
+    <head>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Simple Interest Calculator</title>
+    </head>
+    <body>
+
+        <div class="maindiv">
+            <h1>Simple Interest Calculator</h1>
+
+            Amount <input type="number"  id="principal">  <br/>
+
+            Rate <input onchange="updateRate()" type="range"  id="rate" min="1" max="20" value="10.25" step="0.25">  
+
+            <span id="rate_val">10.25</span>
+
+            <br/>
+
+            No. of Years 
+
+            <select id="years">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+
+            <br>
+
+            <button onclick="compute()">Compute Interest</button>
+
+            <br>
+            <br>
+
+            Interest : <span id="result"></span><br>
+
+            
+
+            <span id="result"></span>
+
+            <br>
+            <br>
+
+            <footer>
+                &#169; This Calculator belongs to Timo
+            </footer>
+
+        </div>
+
+        <script type="text/javascript">
+
+        function compute() {
+        
+            var principal = document.getElementById("principal").value;
+
+                if (principal <=0 ) {
+                alert("Enter a positive number");
+                }
+
+            var rate = document.getElementById("rate").value;
+            var years = document.getElementById("years").value;
+            var interest = principal * years * rate /100;
+            var year = new Date().getFullYear()+parseInt(years);
+
+            
+
+            document.getElementById("result").innerHTML="\<br\>\<br\><b>If</b> you deposit " + principal + ",\<br\> <b>at</b> an interest rate of " + rate + "%.\<br\> <b>You</b> will receive an amount of " + interest + ",\<br\> <b>in</b> the year "+year + "\<br\>";
+         }
+
+        function updateRate() {
+        
+            var rateval = document.getElementById("rate").value;
+            document.getElementById("rate_val").innerText=rateval;
+        }
+
+    </script>
+
+
+
+    </body>
+
+
